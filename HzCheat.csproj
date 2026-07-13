@@ -14,14 +14,13 @@
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 
-    <!-- Permissions -->
-    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <UseMaui>true</UseMaui>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- Microsoft Maui -->
-    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Maui.Controls.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
+    <PackageReference Include="Microsoft.Maui.Controls.Hosting" Version="8.0.7" />
   </ItemGroup>
 
 </Project>
