@@ -34,7 +34,7 @@ jobs:
       run: dotnet publish HzCheat.csproj -c Release -f net8.0-android
     
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Hz-Cheat-APK
         path: bin/Release/net8.0-android/
