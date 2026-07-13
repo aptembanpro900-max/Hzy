@@ -1,4 +1,4 @@
-name: Build Hz Cheat
+name: Build Hz Cheat APK
 
 on:
   push:
@@ -8,24 +8,33 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     
-    - name: Setup .NET
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
+    - name: Setup .NET MAUI
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0.x'
     
+    - name: Install MAUI workload
+      run: dotnet workload install maui
+    
     - name: Restore dependencies
       run: dotnet restore HzCheat.csproj
     
-    - name: Build
-      run: dotnet build HzCheat.csproj --configuration Release --no-restore
+    - name: Build Android APK
+      run: dotnet publish HzCheat.csproj -c Release -f net8.0-android
     
-    - name: Upload artifacts
+    - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
-        name: Hz-Cheat-Build
-        path: bin/Release/
+        name: Hz-Cheat-APK
+        path: bin/Release/net8.0-android/
